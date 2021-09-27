@@ -1,7 +1,7 @@
 import React from "react";
 import millify from "millify";
 import { Typography, Row, Col, Statistic } from "antd";
-
+import Loader from "./Loader";
 import { Link } from "react-router-dom";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
@@ -13,9 +13,7 @@ const HomePage = () => {
   const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
 
-  console.log(data);
-
-  if (isFetching) return "Loading ...";
+  if (isFetching) return <Loader />;
   return (
     <>
       <Title level={2} className="heading">
